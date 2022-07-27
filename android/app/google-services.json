@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "680601452721",
+    "project_id": "control-gastos-generales",
+    "storage_bucket": "control-gastos-generales.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680601452721:android:135f652cbe0a4681e8e290",
+        "android_client_info": {
+          "package_name": "com.example.cgg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680601452721-jh7rjhb63krcednoho27tcq3ce8t1u02.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cgg",
+            "certificate_hash": "ea2cd783cabda5f668d1b5295338ef4065ba232b"
+          }
+        },
+        {
+          "client_id": "680601452721-79p8baoasbsah4qh0a2gdivlvq19e8pb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQO_86N7V4sYLgXUz8aeZ50ZpfUQDydD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680601452721-79p8baoasbsah4qh0a2gdivlvq19e8pb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
