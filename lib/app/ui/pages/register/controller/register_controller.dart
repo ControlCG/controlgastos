@@ -8,4 +8,20 @@ class RegisterController extends StateNotifier<RegisterState>{
   submit(){
     
   }
+
+  void onNameChange(String text){
+    state = state.copyWith(name: text);
+  }
+  void onlastNameChange(String text){
+    state = state.copyWith(lastname: text);
+  }
+  void onEmailChange(String text){
+    state = state.copyWith(email: text);
+  }
+  void onPasswordChange(String text){
+    state = state.copyWith(password: text);
+  }
+  void onVPasswordChange(String text){
+    state = state.copyWith(vPassword: text);
+  }
 }
