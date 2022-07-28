@@ -12,6 +12,7 @@ class SplashController extends SimpleNotifier{
 
   SplashController(){
     _init();
+    
   }
 
  void _init() async{

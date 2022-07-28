@@ -1,12 +1,24 @@
+import 'package:cgg/app/domain/inputs/sign_up.dart';
+
+import 'package:cgg/app/domain/repositories/sign_up_repository.dart';
 import 'package:cgg/app/ui/pages/register/controller/register_state.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_meedu/meedu.dart';
 
 class RegisterController extends StateNotifier<RegisterState>{
   RegisterController():super(RegisterState.initialState);
+  final GlobalKey<FormState> formKey = GlobalKey();
+  final _signUpRepository = Get.find<SignUpRepository>();
 
-
-  submit(){
-    
+  Future<SignUpResponse> submit(){
+    return _signUpRepository.register(
+      SignUpData(
+        name: state.name, 
+        lastname: state.lastname, 
+        email: state.email, 
+        password: state.password
+      ),
+    );
   }
 
   void onNameChange(String text){

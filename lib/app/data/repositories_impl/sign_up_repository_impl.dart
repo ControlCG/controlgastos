@@ -19,7 +19,7 @@ final FirebaseAuth _auth;
     );
   return SignUpResponse(null, userCredential.user!);
    }on FirebaseAuthException catch(e){
-    return SignUpResponse(e.code,null);
+    return SignUpResponse(parseStringToSignUpError(e.code),null);
    }
   }
 }

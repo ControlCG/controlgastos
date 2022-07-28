@@ -30,4 +30,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository{
         },
       );
   }
+  
+  @override
+  Future<void> signOut() {
+    return _auth.signOut();
+  }
 }
