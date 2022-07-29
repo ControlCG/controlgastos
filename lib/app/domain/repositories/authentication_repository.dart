@@ -1,3 +1,4 @@
+import 'package:cgg/app/domain/responses/sign_in_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthenticationRepository{
@@ -10,10 +11,3 @@ abstract class AuthenticationRepository{
 }
 
 
-
-class SignInResponse{
-  final String? error;
-  final User? user;
-
-  SignInResponse(this.error, this.user);  
-}

@@ -1,6 +1,7 @@
 import 'package:cgg/app/domain/inputs/sign_up.dart';
 
 import 'package:cgg/app/domain/repositories/sign_up_repository.dart';
+import 'package:cgg/app/domain/responses/sign_up_response.dart';
 import 'package:cgg/app/ui/pages/register/controller/register_state.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_meedu/meedu.dart';

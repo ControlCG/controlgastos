@@ -1,6 +1,7 @@
 
 import 'package:cgg/app/domain/inputs/sign_up.dart';
 import 'package:cgg/app/domain/repositories/sign_up_repository.dart';
+import 'package:cgg/app/domain/responses/sign_up_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpRepositoryImpl implements SignUpRepository{

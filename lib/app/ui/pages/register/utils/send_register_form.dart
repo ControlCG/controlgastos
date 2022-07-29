@@ -1,4 +1,5 @@
 import 'package:cgg/app/domain/inputs/sign_up.dart';
+import 'package:cgg/app/domain/responses/sign_up_response.dart';
 import 'package:cgg/app/ui/global_widgets/dialogs/dialogs.dart';
 import 'package:cgg/app/ui/global_widgets/dialogs/progress_dialog.dart';
 import 'package:cgg/app/ui/routes/routes.dart';
@@ -21,19 +22,23 @@ Future<void> sendRegisterForm(BuildContext context) async{
       switch(response.error){
         
         case SignUpError.emailAlreadyInUse:
-            content = "email already in use";
+            content = "Correo electrónico en uso";
           break;
         case SignUpError.weakPassword:
-            content = "weak Password";
+            content = "Contraseña debil";
+          break;
+
+        case SignUpError.networkRequestFailed:
+            content = "Internet desconectado";
           break;
         case SignUpError.unknow:
         default: 
-             content = "unknow error";
+             content = "Error desconocido";
           break;
       }
       Dialogs.alert(
         context,
-        title: "ERROR",
+        title: "Ups...",
         content: content,
         );
     }else{

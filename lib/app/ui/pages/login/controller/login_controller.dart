@@ -1,4 +1,5 @@
 import 'package:cgg/app/domain/repositories/authentication_repository.dart';
+import 'package:cgg/app/domain/responses/sign_in_response.dart';
 import 'package:flutter/widgets.dart' show FormState, GlobalKey;
 import 'package:flutter_meedu/meedu.dart';
 
