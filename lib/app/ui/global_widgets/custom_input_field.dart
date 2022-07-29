@@ -28,6 +28,7 @@ late bool _obscureText;
   Widget build(BuildContext context) {
     return FormField<String>(
       validator: widget.validator,
+      initialValue: '',
       autovalidateMode: AutovalidateMode.onUserInteraction,
       builder: (state){
       return Column(

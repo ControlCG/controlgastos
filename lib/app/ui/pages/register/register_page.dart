@@ -64,9 +64,7 @@ class RegisterPage extends StatelessWidget {
                   label: "Nombre:",
                   onChanged: controller.onNameChange,
                   validator: (text){
-                    if(text == null) return "Nombre invalido";
-            
-                    return isValidName(text)?null:"El nombre es alfanúmerico";
+                    return isValidName(text!)?null:"El nombre es alfanúmerico";
                   },
                 ),
                 const SizedBox(height: 15),
@@ -75,9 +73,7 @@ class RegisterPage extends StatelessWidget {
                   label: "Apellido:",
                   onChanged: controller.onlastNameChange,
                    validator: (text){
-                    if(text == null) return "Apellido invalido";
-            
-                    return isValidName(text)?null:"El apellido es alfanúmerico";
+                    return isValidName(text!)?null:"El apellido es alfanúmerico";
                   },
                 ),
                 const SizedBox(height: 15),
@@ -87,8 +83,7 @@ class RegisterPage extends StatelessWidget {
                   inputType: TextInputType.emailAddress,
                   onChanged: controller.onEmailChange,
                   validator: (text){
-                    if(text == null) return "Correo invalido";
-                    return isValidEmail(text)?null:"Correo electrónico no existe";
+                    return isValidEmail(text!)?null:"Correo electrónico no existe";
                   },
                 ),
                  const SizedBox(height: 15),
@@ -98,8 +93,7 @@ class RegisterPage extends StatelessWidget {
                   onChanged: controller.onPasswordChange,
                   isPassword: true,
                   validator: (text){
-                    if(text == null) return "Contraseña invalida";
-                    if(text.trim().length>=6){
+                    if(text!.trim().length>=6){
                       return null;
                     }
                     return "Contraseña invalida";
@@ -118,11 +112,10 @@ class RegisterPage extends StatelessWidget {
                   onChanged: controller.onVPasswordChange,
                   isPassword: true,
                    validator: (text){
-                    if(text == null) return "Contraseña invalida";
                     if(controller.state.password!=text){
                       return "Las contraseñas no son iguales";
                     }
-                    if(text.trim().length>=6){
+                    if(text!.trim().length>=6){
                       return null;
                     }
                     return "Contraseña invalida";
