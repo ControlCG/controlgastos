@@ -34,10 +34,33 @@ class RegisterPage extends StatelessWidget {
           color: Colors.transparent,
           child:Form(
             key: controller.formKey,
+            //Diseño de cajas de texto
             child: ListView(
               padding:const EdgeInsets.all(15),
               children: [
+                const SizedBox(height: 30.0,),
+                const Text("Registro de Usuarios",textAlign: TextAlign.center,
+                style:TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 30.0,
+                  )),
+                const SizedBox(height: 10.0,),
+                Image.asset("assets/images/crecimiento.png",
+                height: 110.0,
+                width:110.0
+                ),
+                const SizedBox(height: 10.0,),
+                const Text(
+                  "Control de gastos",textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black38,
+                    fontSize: 25.0
+                  ),
+                ),
                 CustomInutField(
+                  icon: Icon(Icons.person),
                   label: "Nombre:",
                   onChanged: controller.onNameChange,
                   validator: (text){
@@ -48,6 +71,7 @@ class RegisterPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 15),
                 CustomInutField(
+                  icon: Icon(Icons.person_add_alt_1),
                   label: "Apellido:",
                   onChanged: controller.onlastNameChange,
                    validator: (text){
@@ -58,6 +82,7 @@ class RegisterPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 15),
                 CustomInutField(
+                  icon: const Icon(Icons.email_outlined),
                   label: "Correo electrónico:",
                   inputType: TextInputType.emailAddress,
                   onChanged: controller.onEmailChange,
@@ -68,7 +93,8 @@ class RegisterPage extends StatelessWidget {
                 ),
                  const SizedBox(height: 15),
                 CustomInutField(
-                  label: "Password",
+                  icon: const Icon(Icons.password_outlined),
+                  label: "Contraseña",
                   onChanged: controller.onPasswordChange,
                   isPassword: true,
                   validator: (text){
@@ -87,7 +113,8 @@ class RegisterPage extends StatelessWidget {
                       )
                     );
                     return CustomInutField(
-                  label: "Verification Password",
+                  icon: const Icon(Icons.password_outlined),
+                  label: "Verificación de contraseña",
                   onChanged: controller.onVPasswordChange,
                   isPassword: true,
                    validator: (text){
@@ -108,6 +135,7 @@ class RegisterPage extends StatelessWidget {
                 CupertinoButton(
                   child:const Text("Registrar"),
                   color: Colors.blue, 
+                  borderRadius: BorderRadius.circular(30.0),
                   onPressed:() =>sendRegisterForm(context),
                ),
               ],
