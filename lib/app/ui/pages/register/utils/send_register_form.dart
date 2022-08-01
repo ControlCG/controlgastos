@@ -29,7 +29,10 @@ Future<void> sendRegisterForm(BuildContext context) async{
           break;
 
         case SignUpError.networkRequestFailed:
-            content = "Internet desconectado";
+            content = "Sin conexión a internet";
+          break;
+        case SignUpError.tooManyRequests:
+            content = "Demasidas solicitudes";
           break;
         case SignUpError.unknow:
         default: 
@@ -49,8 +52,8 @@ Future<void> sendRegisterForm(BuildContext context) async{
   }else{
     Dialogs.alert(
       context,
-      title: "ERROR",
-      content: "Invalid fields"
+      title: "Ups..",
+      content: "Campos invalidos"
     );
   }
 }

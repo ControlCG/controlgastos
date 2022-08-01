@@ -58,16 +58,27 @@ class LoginPage extends StatelessWidget {
                   },
                   ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: ()=> sendLoginForm(context),
-                  child: const Text("Iniciar sesión"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed:() =>router.pushNamed(Routes.RESET_PASSWORD),
+                      child: const Text("Has olvidado tu contraseña?"),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: ()=> sendLoginForm(context),
+                      child: const Text("Iniciar sesión"),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () => router.pushNamed(Routes.REGISTER
                   ), 
                   child: const Text("Registrar"),
-                )
+                ),
+                const SizedBox(height: 30),
               ],
             ),
           ),

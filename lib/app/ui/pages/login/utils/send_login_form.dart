@@ -31,6 +31,9 @@ Future<void> sendLoginForm(BuildContext context)async{
       case SignInError.wrongPassword:
         errorMessage = "Contraseña incorrecta";
         break;
+      case SignInError.tooManyRequests:
+        errorMessage = "Demasidas solicitudes";
+        break;
       case SignInError.unknow:
       default:
         errorMessage = "Error desconocido";

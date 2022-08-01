@@ -1,3 +1,4 @@
+import 'package:cgg/app/domain/responses/reset_password_response.dart';
 import 'package:cgg/app/domain/responses/sign_in_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,6 +9,7 @@ abstract class AuthenticationRepository{
     String email, 
     String password
   );
+  Future<ResetPasswordResponse> sendResetPasswordLink(String email);
 }
 
 
