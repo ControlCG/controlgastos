@@ -39,6 +39,7 @@ dependencies:
   firebase_auth:
   flutter_meedu: "^7.1.0"
   freezed: ^0.14.3
+  font_awesome_flutter: ^10.1.0
   
 
 dev_dependencies:

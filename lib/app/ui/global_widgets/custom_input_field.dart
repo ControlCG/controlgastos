@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //Diseño de cajas de texto
@@ -37,6 +39,9 @@ late bool _obscureText;
           TextField(
           obscureText:_obscureText ,
           keyboardType: widget.inputType,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
           onChanged: (text){
             if(widget.validator!=null){
               // ignore: invalid_use_of_protected_member
@@ -51,7 +56,7 @@ late bool _obscureText;
             labelText: widget.label,
               border: const OutlineInputBorder(),
               suffixIcon: widget.isPassword? CupertinoButton(
-                child: Icon(_obscureText? Icons.visibility : Icons.visibility_off,
+                child: Icon(_obscureText? Icons.visibility : Icons.visibility_off, color: Color.fromARGB(255, 104, 103, 103),
                 ),
                 onPressed:(){
                   _obscureText=!_obscureText;
@@ -63,11 +68,11 @@ late bool _obscureText;
             ),
               enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                borderSide: BorderSide(color: Colors.transparent),
+                borderSide: BorderSide(color: Color.fromARGB(255, 185, 181, 181)),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                borderSide: BorderSide(color: Colors.blue),
+                borderSide: BorderSide(color: Colors.black),
               ),
               prefixIcon: widget.icon,
               fillColor: Colors.grey[200],
