@@ -4,14 +4,20 @@ import 'package:cgg/app/domain/repositories/authentication_repository.dart';
 import 'package:cgg/app/domain/responses/reset_password_response.dart';
 import 'package:cgg/app/domain/responses/sign_in_response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository{
   final FirebaseAuth _auth;
+  final GoogleSignIn _googleSignIn;
   User? _user;
 
   final Completer<void> _completer = Completer();
 
-  AuthenticationRepositoryImpl(this._auth){
+  AuthenticationRepositoryImpl({
+    required FirebaseAuth firebaseAuth,
+    required GoogleSignIn googleSignIn,
+  }): _auth = firebaseAuth, 
+      _googleSignIn = googleSignIn{
     _init();
   }
 
@@ -46,11 +52,13 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository{
         password: password,
       );
      final user = userCredential.user!;
-     return SignInResponse(null, user);
+     return SignInResponse(user:user,
+     providerId: userCredential.credential?.providerId,
+     error:null, 
+     );
     }on FirebaseAuthException catch(e){
       print(e.code);
-      return SignInResponse(stringToSignInError(e.code), null,
-      );
+      return getSignInError(e);
     }
   }
   
@@ -61,6 +69,38 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository{
       return ResetPasswordResponse.ok;
     }on FirebaseAuthException catch(e){
       return stringToResetPasswordRespone(e.code);
+    }
+  }
+  
+  @override
+  Future<SignInResponse> signInWithGoogle() async{
+    try{
+      final account = await _googleSignIn.signIn();
+      if(account == null){
+        return SignInResponse(
+          error: SignInError.cancelled,
+          user: null,
+          providerId: null,
+        );
+      }
+
+      final googleAuth =await account.authentication;
+
+      final OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+        accessToken: googleAuth.accessToken,
+      );
+
+     final userCredential = await _auth.signInWithCredential(
+      oAuthCredential,
+      );
+         return SignInResponse(
+          error: null, 
+          user: userCredential.user,
+          providerId: userCredential.credential?.providerId,);
+    }on FirebaseAuthException catch(e){
+      
+      return getSignInError(e);
     }
   }
 }

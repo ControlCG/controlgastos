@@ -17,10 +17,14 @@ class LoginController extends SimpleNotifier{
     _password = text;
   }
 
-  Future<SignInResponse> submit(){
+  Future<SignInResponse> signInWithEmailAndPassword(){
     return _authenticationRepository.signInWithEmailAndPassword(
       _email, 
       _password,
     );
+  }
+
+  Future<SignInResponse> signInWithGoogle(){
+    return _authenticationRepository.signInWithGoogle();
   }
 }

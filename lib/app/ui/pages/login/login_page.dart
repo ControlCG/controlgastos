@@ -1,6 +1,7 @@
 import 'package:cgg/app/ui/global_widgets/custom_button.dart';
 import 'package:cgg/app/ui/global_widgets/custom_input_field.dart';
 import 'package:cgg/app/ui/pages/login/utils/send_login_form.dart';
+import 'package:cgg/app/ui/pages/login/utils/sign_in_with_google.dart';
 import 'package:cgg/app/ui/pages/register/register_page.dart';
 import 'package:cgg/app/ui/pages/register/utils/send_register_form.dart';
 import 'package:cgg/app/ui/routes/routes.dart';
@@ -144,7 +145,7 @@ class LoginPage extends StatelessWidget {
                         FontAwesomeIcons.google,
                         color:Colors.blue,
                       ),
-                      onPressed: (){},
+                      onPressed: () =>signInWithGoogle(context),
                     ),
                   )
                 ]),
