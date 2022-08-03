@@ -1,7 +1,10 @@
+import 'package:cgg/app/ui/global_widgets/custom_button.dart';
 import 'package:cgg/app/ui/global_widgets/custom_input_field.dart';
+import 'package:cgg/app/ui/pages/login/login_page.dart';
 import 'package:cgg/app/ui/pages/register/controller/register_controller.dart';
 import 'package:cgg/app/ui/pages/register/controller/register_state.dart';
 import 'package:cgg/app/ui/pages/register/utils/send_register_form.dart';
+import 'package:cgg/app/ui/routes/routes.dart';
 import 'package:cgg/app/utils/email_validator.dart';
 import 'package:cgg/app/utils/name_validator.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,117 +27,111 @@ class RegisterPage extends StatelessWidget {
       provider: registerProvider,
       builder: (_,controller){
         return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: GestureDetector(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+       child: GestureDetector(
         onTap: ()=>FocusScope.of(context).unfocus(),
-        child: Container(
-          width:double.infinity,
-          height: double.infinity,
+         child: Container(
           color: Colors.transparent,
-          child:Form(
+          width: double.infinity,
+          padding: EdgeInsets.all(10.0),
+          child: Form(
             key: controller.formKey,
-            //Diseño de cajas de texto
-            child: ListView(
-              padding:const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 30.0,),
-                const Text("Registro de Usuarios",textAlign: TextAlign.center,
-                style:TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 30.0,
-                  )),
-                const SizedBox(height: 10.0,),
-                Image.asset("assets/images/crecimiento.png",
-                height: 110.0,
-                width:110.0
-                ),
-                const SizedBox(height: 10.0,),
-                const Text(
-                  "Control de gastos",textAlign: TextAlign.center,
+                // Texto de bienvenida 
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text("¡Hola!Regístrate para comenzar",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black38,
-                    fontSize: 25.0
-                  ),
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold
+                  )),
                 ),
+                // Cajas de texto
                 CustomInutField(
-                  icon: Icon(Icons.person),
-                  label: "Nombre:",
-                  onChanged: controller.onNameChange,
-                  validator: (text){
-                    return isValidName(text!)?null:"El nombre es alfanúmerico";
-                  },
-                ),
-                const SizedBox(height: 15),
-                CustomInutField(
-                  icon: Icon(Icons.person_add_alt_1),
-                  label: "Apellido:",
-                  onChanged: controller.onlastNameChange,
-                   validator: (text){
-                    return isValidName(text!)?null:"El apellido es alfanúmerico";
-                  },
-                ),
-                const SizedBox(height: 15),
-                CustomInutField(
-                  icon: const Icon(Icons.email_outlined),
-                  label: "Correo electrónico:",
-                  inputType: TextInputType.emailAddress,
-                  onChanged: controller.onEmailChange,
-                  validator: (text){
-                    return isValidEmail(text!)?null:"Correo electrónico no existe";
-                  },
-                ),
-                 const SizedBox(height: 15),
-                CustomInutField(
-                  icon: const Icon(Icons.password_outlined),
-                  label: "Contraseña",
-                  onChanged: controller.onPasswordChange,
-                  isPassword: true,
-                  validator: (text){
-                    if(text!.trim().length>=6){
-                      return null;
-                    }
-                    return "Contraseña invalida";
-                  },
-                ),
-                const SizedBox(height: 15),
-                Consumer(
-                  builder: (_, watch, __){
-                    (registerProvider.select(
-                      (_) => _.password,
-                      )
+                      icon: Icon(Icons.person),
+                      label: "Nombre:",
+                      onChanged: controller.onNameChange,
+                      validator: (text){
+                        return isValidName(text!)?null:"El nombre es alfanúmerico";
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    CustomInutField(
+                      icon: Icon(Icons.person_add_alt_1),
+                      label: "Apellido:",
+                      onChanged: controller.onlastNameChange,
+                       validator: (text){
+                        return isValidName(text!)?null:"El apellido es alfanúmerico";
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    CustomInutField(
+                      icon: const Icon(Icons.email_outlined),
+                      label: "Correo electrónico:",
+                      inputType: TextInputType.emailAddress,
+                      onChanged: controller.onEmailChange,
+                      validator: (text){
+                        return isValidEmail(text!)?null:"Correo electrónico no existe";
+                      },
+                    ),
+                     const SizedBox(height: 15),
+                    CustomInutField(
+                      icon: const Icon(Icons.password_outlined),
+                      label: "Contraseña",
+                      onChanged: controller.onPasswordChange,
+                      isPassword: true,
+                      validator: (text){
+                        if(text!.trim().length>=6){
+                          return null;
+                        }
+                        return "Contraseña invalida";
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    Consumer(
+                      builder: (_, watch, __){
+                        (registerProvider.select(
+                          (_) => _.password,
+                          )
+                        );
+                        return CustomInutField(
+                      icon: const Icon(Icons.password_outlined),
+                      label: "Verificación de contraseña",
+                      onChanged: controller.onVPasswordChange,
+                      isPassword: true,
+                       validator: (text){
+                        if(controller.state.password!=text){
+                          return "Las contraseñas no son iguales";
+                        }
+                        if(text!.trim().length>=6){
+                          return null;
+                        }
+                        return "Contraseña invalida";
+                      },
                     );
-                    return CustomInutField(
-                  icon: const Icon(Icons.password_outlined),
-                  label: "Verificación de contraseña",
-                  onChanged: controller.onVPasswordChange,
-                  isPassword: true,
-                   validator: (text){
-                    if(controller.state.password!=text){
-                      return "Las contraseñas no son iguales";
-                    }
-                    if(text!.trim().length>=6){
-                      return null;
-                    }
-                    return "Contraseña invalida";
-                  },
-                );
-                  },
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                //Boton de inicio de sesión
+                CustomizedButton(
+                  buttonText: "Crear cuenta",
+                  buttonColor: Colors.black,
+                  textColor: Colors.white,
+                  onPressed: ()=> sendRegisterForm(context),
                 ),
-            
-                const SizedBox(height: 30),
-                CupertinoButton(
-                  child:const Text("Registrar"),
-                  color: Colors.blue, 
-                  borderRadius: BorderRadius.circular(30.0),
-                  onPressed:() =>sendRegisterForm(context),
-               ),
+                
+                
               ],
-              ),
-         ),
+            ),
+          ),
         ),
+       )
       ),
     );
       },
