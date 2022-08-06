@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   child: IconButton(
                     icon: const Icon(Icons.arrow_back_ios_sharp),
-                    onPressed: (){},),
+                    onPressed: ()=>Navigator.pop(context,false)),
                 ),
                 // Texto de bienvenida 
                 const Padding(

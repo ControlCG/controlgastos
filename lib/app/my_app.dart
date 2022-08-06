@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Control de Gastos',
       navigatorKey: router.navigatorKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.SPLASH,
+      initialRoute: Routes.WELCOME,
       navigatorObservers: [
         router.observer,
       ],
