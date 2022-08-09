@@ -1,11 +1,13 @@
 import 'package:cgg/app/domain/responses/reset_password_response.dart';
-import 'package:cgg/app/ui/global_widgets/custom_input_field.dart';
 import 'package:cgg/app/ui/global_widgets/dialogs/dialogs.dart';
 import 'package:cgg/app/ui/global_widgets/dialogs/progress_dialog.dart';
 import 'package:cgg/app/utils/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
+
+import '../../global_widgets/custom_button.dart';
+import '../../global_widgets/custom_input_field.dart';
 import 'controller/reset_password_controller.dart';
 
 final resetPasswordProvider = SimpleProvider(
@@ -35,15 +37,17 @@ class ResetPasswordPage extends StatelessWidget {
             children: [
               CustomInutField(
                 label: "Correo electrónico:",
+                onChanged:controller.onEmailChange,
                 icon: const Icon(Icons.email_outlined),
                 inputType: TextInputType.emailAddress, 
-                onChanged: controller.onEmailChange,
               ),
-              ElevatedButton(
-                onPressed: () =>_submit(context), 
-                child: Text("Envíar"),
-            ),
-            const SizedBox(height: 30),
+                 //Boton de inicio de sesión
+                CustomizedButton(
+                  buttonText: "Envíar",
+                  buttonColor: Colors.black,
+                  textColor: Colors.white,
+                  onPressed: ()=> _submit(context),
+                ),
             ],
            ),
           ),
@@ -53,7 +57,7 @@ class ResetPasswordPage extends StatelessWidget {
   );
   }
 
-  void _submit(BuildContext context) async{
+void _submit(BuildContext context) async{
     final controller = resetPasswordProvider.read;
     if(isValidEmail(controller.email)){
       ProgressDialog.show(context);
@@ -61,15 +65,16 @@ class ResetPasswordPage extends StatelessWidget {
       Navigator.pop(context);
       if(response == ResetPasswordResponse.ok){
         Dialogs.alert(
-          context, 
-          title: "Bien",
+          context,
+          title: "¡Excelente!",
           content: "Correo enviado",
         );
       }else{
         String errorMessage = "";
         switch(response){
+
           case ResetPasswordResponse.networkRequestFailed:
-            errorMessage = "Sin conexión a internet";
+            errorMessage = "Error en la solicitud de red";
             break;
           case ResetPasswordResponse.userDisabled:
             errorMessage = "Usuario deshabilitado";
@@ -81,18 +86,18 @@ class ResetPasswordPage extends StatelessWidget {
             errorMessage = "Demasiadas solicitudes";
             break;
           case ResetPasswordResponse.unknow:
-          default:
+            default:
             errorMessage = "Error desconocido";
             break;
         }
         Dialogs.alert(
-          context, 
-          title: "Ups...",
+          context,
+          title: "Error",
           content: errorMessage,
         );
       }
-    }else{
-      Dialogs.alert(context,content: "Correo invalido");
+  }else{
+    Dialogs.alert(context,content: "Correo invalido");
     }
   }
 }

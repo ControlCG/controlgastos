@@ -22,17 +22,17 @@ Future<void> sendRegisterForm(BuildContext context) async{
       switch(response.error){
         
         case SignUpError.emailAlreadyInUse:
-            content = "Correo electrónico en uso";
+            content = "Correo ya en uso";
           break;
         case SignUpError.weakPassword:
-            content = "Contraseña debil";
+            content = "Contraseña débil";
           break;
 
         case SignUpError.networkRequestFailed:
-            content = "Sin conexión a internet";
+            content = "Error en la solicitud de red";
           break;
         case SignUpError.tooManyRequests:
-            content = "Demasidas solicitudes";
+            content = "Demasiadas solicitudes";
           break;
         case SignUpError.unknow:
         default: 
