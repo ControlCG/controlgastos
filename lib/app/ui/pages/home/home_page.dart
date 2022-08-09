@@ -1,4 +1,5 @@
 import 'package:cgg/app/domain/repositories/authentication_repository.dart';
+import 'package:cgg/app/ui/global_controllers/sesion_controller.dart';
 import 'package:cgg/app/ui/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            
             Text("HOME PAGE"),
             SizedBox(height: 20),
             CupertinoButton(

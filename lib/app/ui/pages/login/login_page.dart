@@ -1,3 +1,4 @@
+import 'package:cgg/app/ui/global_controllers/sesion_controller.dart';
 import 'package:cgg/app/ui/global_widgets/custom_button.dart';
 import 'package:cgg/app/ui/global_widgets/custom_input_field.dart';
 import 'package:cgg/app/ui/pages/login/utils/send_login_form.dart';
@@ -12,7 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'controller/login_controller.dart';
 
 final loginProvider = SimpleProvider(
-  (_) => LoginController(),
+  (_) => LoginController(sessionProvider.read),
 );
 
 class LoginPage extends StatelessWidget {

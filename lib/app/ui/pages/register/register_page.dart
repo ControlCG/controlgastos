@@ -1,3 +1,4 @@
+import 'package:cgg/app/ui/global_controllers/sesion_controller.dart';
 import 'package:cgg/app/ui/global_widgets/custom_button.dart';
 import 'package:cgg/app/ui/global_widgets/custom_input_field.dart';
 import 'package:cgg/app/ui/pages/login/login_page.dart';
@@ -13,7 +14,7 @@ import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
 
 final registerProvider = StateProvider<RegisterController, RegisterState>(
-  (_) => RegisterController(),
+  (_) => RegisterController(sessionProvider.read),
 );
 
 class RegisterPage extends StatelessWidget {
