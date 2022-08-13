@@ -5,10 +5,8 @@ import 'package:cgg/app/ui/pages/login/login_page.dart';
 import 'package:cgg/app/ui/pages/register/controller/register_controller.dart';
 import 'package:cgg/app/ui/pages/register/controller/register_state.dart';
 import 'package:cgg/app/ui/pages/register/utils/send_register_form.dart';
-import 'package:cgg/app/ui/routes/routes.dart';
 import 'package:cgg/app/utils/email_validator.dart';
 import 'package:cgg/app/utils/name_validator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
@@ -28,7 +26,6 @@ class RegisterPage extends StatelessWidget {
       provider: registerProvider,
       builder: (_,controller){
         return Scaffold(
-      appBar: AppBar(),
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -43,6 +40,19 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //Boton back retorna a la panatalla de inicio
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    border: Border.all(color:Colors.blue, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+
+                  ),
+                 child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_sharp),
+                    onPressed: ()=>Navigator.pop(context,false)),
+                ),
                 // Texto de bienvenida 
                 const Padding(
                   padding: EdgeInsets.all(10.0),
@@ -126,8 +136,6 @@ class RegisterPage extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: ()=> sendRegisterForm(context),
                 ),
-                
-                
               ],
             ),
           ),
