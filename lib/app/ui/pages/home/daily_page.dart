@@ -1,4 +1,7 @@
 import 'package:cgg/app/domain/repositories/authentication_repository.dart';
+import 'package:cgg/app/ui/pages/home/day_month.dart';
+import 'package:date_picker_timeline/date_picker_widget.dart';
+import 'package:intl/intl.dart';
 import 'package:cgg/app/ui/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
@@ -12,6 +15,7 @@ class DailyPage extends StatefulWidget {
 }
 
 class _nameState extends State<DailyPage> {
+  int activeDay = 4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +60,26 @@ class _nameState extends State<DailyPage> {
                         icon: const Icon(Icons.logout_outlined),color: Colors.blue,iconSize:33,
                       )
                     ],
+                  ),
+                   const SizedBox(height:25),
+                   Column(
+                    children: [
+                     Container(
+                      child: DatePicker(
+                        DateTime.now(),
+                        height: 100,
+                        width: 80,
+                        initialSelectedDate: DateTime.now(),
+                        selectionColor: Colors.blue,
+                        selectedTextColor: Colors.white,
+                        dateTextStyle:const TextStyle(
+                          fontSize:20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey
+                        )
+                      )
+                     ),
+                    ]
                   )
                 ],
               ),
