@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:cgg/app/ui/pages/home/create_page.dart';
 import 'package:cgg/app/ui/pages/home/daily_page.dart';
 import 'package:flutter/material.dart';
 
@@ -41,9 +42,7 @@ class _HomePageState extends State<HomePage> {
         Center(
           child: Text("Estado"),
         ),
-        Center(
-          child: Text("Perfil"),
-        ),
+        CreatePage()
       ],
     );
   }

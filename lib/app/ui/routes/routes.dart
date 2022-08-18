@@ -10,4 +10,6 @@ abstract class Routes{
   static const HOME = '/home';
   static const RESET_PASSWORD = '/reset-password';
   static const DAILY = 'daily';
+  static const CREATE = 'create';
+  static const CREATEU = 'createu';
 }

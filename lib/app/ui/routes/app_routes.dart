@@ -1,3 +1,5 @@
+import 'package:cgg/app/ui/pages/addu/create_user_page.dart';
+import 'package:cgg/app/ui/pages/home/create_page.dart';
 import 'package:cgg/app/ui/pages/home/daily_page.dart';
 import 'package:cgg/app/ui/pages/home/home_page.dart';
 import 'package:cgg/app/ui/pages/login/login_page.dart';
@@ -16,4 +18,6 @@ Map<String, Widget Function(BuildContext)> get appRoutes =>{
     Routes.RESET_PASSWORD:(_) => const ResetPasswordPage(),
     Routes.WELCOME:(_) => const WelcomePage(),
     Routes.DAILY:(_) => const DailyPage(),
+    Routes.CREATE:(_) => const CreatePage(),
+    Routes.CREATEU:(_) => const CreateUPage(),
 };

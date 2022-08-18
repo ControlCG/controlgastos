@@ -85,6 +85,35 @@ class _nameState extends State<DailyPage> {
               ),
             ),
           ),
+          const SizedBox(height: 30,),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right:20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: (size.width-40) * 0.7,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration:BoxDecoration(
+                              color: Colors.grey.withOpacity(0.1),
+                              shape: BoxShape.circle
+                            ),
+                            child: Icon(Icons.attach_money)
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
